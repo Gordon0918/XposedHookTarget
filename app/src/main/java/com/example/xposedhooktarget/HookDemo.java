@@ -34,6 +34,15 @@ public class HookDemo {
         Log.d(Tag, "PublicInt = " + publicInt);
         Log.d(Tag, "privateInt = " + privateInt);
         privateFunc("NOHook");
+        staticPrivateFunc("NOHook");
+
+        String[][] str = new String[1][2];
+        Map map = new HashMap<String, String>();
+        map.put("key", "value");
+        ArrayList arrayList = new ArrayList();
+        arrayList.add("listValue");
+        complexParameterFunc("NOHook", str, map, arrayList);
+
         repleaceFunc();
         anonymousInner(new Animal() {
             @Override
@@ -53,6 +62,15 @@ public class HookDemo {
 
     private void privateFunc(String value){
         Log.d(Tag, "privateFunc(String value) was called|||" + value);
+    }
+
+    static private void staticPrivateFunc(String value){
+        Log.d("HookDemo", "staticPrivateFunc(Strin value) was called|||" + value);
+    }
+
+    private void complexParameterFunc(String value, String[][] str, Map<String,String> map, ArrayList arrayList)
+    {
+        Log.d("HookDemo", "complexParameter(Strin value) was called|||" + value);
     }
 
     private void repleaceFunc(){
@@ -81,3 +99,4 @@ public class HookDemo {
         }
     }
 }
+
